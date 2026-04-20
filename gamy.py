@@ -60,12 +60,28 @@ while game:
         window.blit(shriftt1,(800,0))
         Arbyzik.rect.y += Arbyzik_y
         Arbyzik.rect.x += Arbyzik_x
-        if Arbyzik.rect.y >= 650 and Arbyzik.rect.y <= 0:
+        if Arbyzik.rect.y >= 650 or Arbyzik.rect.y <= 0:
             Arbyzik_y *= -1
+        if sprite.collide_rect(Arbyzik,skovorodka1):
+            Arbyzik_x *= -1
+            Arbyzik.rect.y += Arbyzik_y
+            Arbyzik.rect.x += Arbyzik_x
+        if sprite.collide_rect(Arbyzik,skovorodka2):
+            Arbyzik_x *= -1
+            Arbyzik.rect.y += Arbyzik_y
+            Arbyzik.rect.x += Arbyzik_x    
         if shchet1 >= 5:
             finish = 1
         if shchet2 >= 5:
             finish = 2
+        if Arbyzik.rect.x <= -75:
+            shchet2 += 1
+            Arbyzik.rect.y = 400
+            Arbyzik.rect.x = 350
+        if Arbyzik.rect.x >= 950 :
+            shchet1 += 1
+            Arbyzik.rect.y = 400
+            Arbyzik.rect.x = 350
     elif finish == 1:
         pobeda = shrift.render('Winner Left',True,(255,0,0))
         window.blit(pobeda,(500,400))
